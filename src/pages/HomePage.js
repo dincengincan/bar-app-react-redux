@@ -53,6 +53,8 @@ class HomePage extends React.Component {
                                 activeTag = {this.state.activeTag}
                                 searchValue = {this.state.searchValue}
                             />
+
+                            
                         </div>
                         
                     </div>

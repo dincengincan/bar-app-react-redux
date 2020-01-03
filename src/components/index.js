@@ -5,7 +5,7 @@ import Main from "./Main";
 import Filters from "./Filters";
 import Search from "./Search";
 import FiltersAlcoholic from "./FiltersAlcoholic"
-
+import Footer from "./Footer"
 
 
 
@@ -16,5 +16,6 @@ export{
     Main,
     Filters,
     Search,
-    FiltersAlcoholic
+    FiltersAlcoholic,
+    Footer
 }

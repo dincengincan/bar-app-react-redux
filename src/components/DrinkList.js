@@ -1,5 +1,5 @@
 import React from 'react';
-import {Drink} from "../components";
+import {Drink,Footer} from "../components";
 import {getDrinks} from "../constants"
 import {stringContains} from "../helpers";
 
@@ -14,7 +14,8 @@ class DrinkList extends React.Component {
             drinks: [],
             loading: true,
             categories: [],
-            index: 12
+            index: 12,
+            pageNumber: 1
         }
     }
 
@@ -39,7 +40,8 @@ class DrinkList extends React.Component {
             .then(data => this.setState({
                 drinks: data.drinks,
                 _drinks: data.drinks,
-            }, () => console.log(this.state.drinks)))
+                
+            }))
             .catch(err => {
                 console.log(err);
             });
@@ -56,21 +58,34 @@ class DrinkList extends React.Component {
                     return stringContains(drink.strDrink, this.props.searchValue)
                 })
             })
-        }else{
-            this.setState({
-                drinks: this.state._drinks.filter(drink => {
-                    return false;
-                })
-            })
         }
     }
 
+    incrementPageNumber = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({
+            pageNumber: this.state.pageNumber+1,
+            
+        })
+    }
 
+    decrementPageNumber = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({
+            pageNumber: this.state.pageNumber-1,
+            
+        })
+    }
 
 
     render(){
-        const drinksToBeDisplayed = this.state.drinks.slice(0,this.state.index)
-        return(
+        //Logic for displaying drinks with pagination
+        const indexOfLastDrink = this.state.pageNumber * this.state.index;
+        const indexOfFirstDrink = indexOfLastDrink - this.state.index;
+        const drinksToBeDisplayed = this.state.drinks.slice(indexOfFirstDrink, indexOfLastDrink);
+        const drinks = [
             <div>
                 {
                     drinksToBeDisplayed.map(drink => {
@@ -80,10 +95,29 @@ class DrinkList extends React.Component {
                         />
                     })
                 }
+
+                <Footer 
+                    totalDrinks={this.state.drinks.length}
+                    pageNumber= {this.state.pageNumber}
+                    incrementPageNumber = {this.incrementPageNumber}
+                    decrementPageNumber = {this.decrementPageNumber}
+                /> 
                 
             
             </div>
-        )
+        ];
+        if(this.state.loading) {
+            return <h2>Loading...</h2>
+        }
+        else if(this.state.drinks.length === 0){
+            return <h2>Couldn't find.</h2>
+        }
+        else{
+            return drinks;
+        }
+        
+           
+        
     }
 }
 
