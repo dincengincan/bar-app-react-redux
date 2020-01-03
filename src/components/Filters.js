@@ -29,16 +29,9 @@ class Filters extends React.Component {
         return (
         
             <div>
-            <h4 className="my-5 text-center">Categories</h4>
+            
             <ul>
-                
-                
-                <li className={
-                    classNames({
-                        "list-group-item": true,
-                        "active": this.props.activeFilter === "all"
-                    })
-                } onClick={() => this.props.onFilterDrinks("all")} >All</li>
+            <h5 className="my-2 text-center">Categories</h5>
                 {
                     this.state.categories.map(categorie => {
                         return <li
@@ -49,7 +42,7 @@ class Filters extends React.Component {
                             })}
                             onClick={(e) => {
                                 e.preventDefault();
-                                this.props.onFilterDrinks(categorie.strCategory);
+                                this.props.onFilterDrinks("c",categorie.strCategory);
                             }}>{categorie.strCategory}</li>
                     })
                 }
@@ -58,7 +51,6 @@ class Filters extends React.Component {
             
         );
     }
-    
 }
 
 export default Filters;

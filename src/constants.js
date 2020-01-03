@@ -1,6 +1,6 @@
 const APIUrl = " https://the-cocktail-db.p.rapidapi.com/";
 const listAction = "list.php?c=list";
-const filterAction = "filter.php?c=";
+const filterAction = "filter.php?";
 const detailAction = "lookup.php?i=";
 
 
@@ -17,8 +17,8 @@ export const getCategories = () => {
         .then(response => response.json())
 }
 
-export const getDrinks = (categorie) => { 
-    return fetch(`${APIUrl}${filterAction}${categorie}`,{
+export const getDrinks = (tag,filter) => { 
+    return fetch(`${APIUrl}${filterAction}${tag}=${filter}`,{
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
@@ -38,6 +38,17 @@ export const getDetails = (id) => {
     })
         .then(response => response.json())
 }
+
+
+
+export const alcoholicFilters = [
+    "Alcoholic",
+    "Non Alcoholic",
+    "Optional Alcohol"
+
+]
+
+    
 
 
 

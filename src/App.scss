@@ -1,0 +1,47 @@
+.Details{
+    .row{
+      position: relative;
+      .back-arrow{
+        position:absolute;
+        top:0;
+        left:0;
+        margin: 0 15px;
+        cursor: pointer;
+        &:hover{
+          opacity: .6;
+        }
+      }
+    }
+  }
+  
+  .switchButton{
+    display: none;
+  }
+  
+  .navbar{
+    justify-content: space-between;
+  }
+  
+  @media screen and (max-width:600px){
+    .navbar{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .navbar-nav{
+        display: none;
+      }
+      .switchButton{
+        display: inline-flex;
+        color: #fff;
+      }
+      .button-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navbar-nav.responsive{
+        display: block;
+      }
+    }
+  }

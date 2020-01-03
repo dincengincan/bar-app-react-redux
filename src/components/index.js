@@ -3,6 +3,8 @@ import DrinkList from "./DrinkList";
 import Header from "./Header";
 import Main from "./Main";
 import Filters from "./Filters";
+import Search from "./Search";
+import FiltersAlcoholic from "./FiltersAlcoholic"
 
 
 
@@ -12,5 +14,7 @@ export{
     DrinkList,
     Header,
     Main,
-    Filters
+    Filters,
+    Search,
+    FiltersAlcoholic
 }

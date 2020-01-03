@@ -1,6 +1,7 @@
 import React from 'react';
 import {Drink} from "../components";
 import {getDrinks} from "../constants"
+import {stringContains} from "../helpers";
 
 
 
@@ -19,12 +20,12 @@ class DrinkList extends React.Component {
 
     //Get the data according to the filter
     componentDidMount(){
-        getDrinks(this.props.activeFilter)
+        getDrinks(this.props.activeTag, this.props.activeFilter)
         .then(data => this.setState({
             drinks: data.drinks,
             _drinks: data.drinks,
             loading: false
-        }, () => console.log(this.state.drinks)))
+        }))
         .catch(err => {
             console.log(err);
         });
@@ -34,17 +35,37 @@ class DrinkList extends React.Component {
     //If filter is changed, display new drinks accordingly.
     componentDidUpdate(prevProps) {
         if(prevProps.activeFilter !== this.props.activeFilter){
-            getDrinks(this.props.activeFilter)
-        .then(data => this.setState({
-            drinks: data.drinks,
-            _drinks: data.drinks,
-        }))
-        .catch(err => {
-            console.log(err);
-        });
+                getDrinks(this.props.activeTag,this.props.activeFilter)
+            .then(data => this.setState({
+                drinks: data.drinks,
+                _drinks: data.drinks,
+            }, () => console.log(this.state.drinks)))
+            .catch(err => {
+                console.log(err);
+            });
         }
-
+        if(prevProps.searchValue !== this.props.searchValue){
+            this.filterDrinksBySearch();
+        }
     }
+
+    filterDrinksBySearch = () => {
+        if(this.props.activeFilter){
+            this.setState({
+                drinks: this.state._drinks.filter(drink => {
+                    return stringContains(drink.strDrink, this.props.searchValue)
+                })
+            })
+        }else{
+            this.setState({
+                drinks: this.state._drinks.filter(drink => {
+                    return false;
+                })
+            })
+        }
+    }
+
+
 
 
     render(){
@@ -55,13 +76,12 @@ class DrinkList extends React.Component {
                     drinksToBeDisplayed.map(drink => {
                         return <Drink key = {drink.idDrink}
                                         {...drink}
-                        
+                                        drinks = {this.state.drinks}
                         />
                     })
                 }
                 
-                <Drink drinks = {this.state.drinks}
-                />
+            
             </div>
         )
     }
