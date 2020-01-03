@@ -1,4 +1,7 @@
 import React from "react";
+import {connect} from "react-redux";
+import {incrementPageNumber, decrementPageNumber} from "../actionCreators/actionCreators";
+
 
 function Footer(props){
   return(
@@ -12,7 +15,7 @@ function Footer(props){
                 }
 
                 {
-                    props.totalDrinks < (props.pageNumber * 12)
+                    props.drinks.length < (props.pageNumber * 12)
                     ? <button disabled className="btn btn-dark">Next Page &raquo;</button>
                     : <button className="btn btn-dark" onClick={() => props.incrementPageNumber() }>Next Page &raquo;</button>
                 }
@@ -23,6 +26,18 @@ function Footer(props){
   )
 }
 
-export default Footer;
+const mapDispatchToProps = dispatch => ({
+    incrementPageNumber: () => {dispatch(incrementPageNumber())},
+    decrementPageNumber: () => {dispatch(decrementPageNumber())}
+});
+
+const mapStateToProps = state => {
+    return{
+        drinks: state.drinks,
+        pageNumber: state.pageNumber
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
 
 

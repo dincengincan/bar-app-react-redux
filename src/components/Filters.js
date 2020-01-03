@@ -1,6 +1,8 @@
 import React from 'react';
 import {getCategories} from "../constants"
 import classNames from "classnames";
+import {connect} from "react-redux";
+import {setFilter} from "../actionCreators/actionCreators";
 
 
 
@@ -42,7 +44,7 @@ class Filters extends React.Component {
                             })}
                             onClick={(e) => {
                                 e.preventDefault();
-                                this.props.onFilterDrinks("c",categorie.strCategory);
+                                this.props.setFilter("c",categorie.strCategory);
                             }}>{categorie.strCategory}</li>
                     })
                 }
@@ -53,4 +55,14 @@ class Filters extends React.Component {
     }
 }
 
-export default Filters;
+const mapDispatchToProps = dispatch => ({
+    setFilter: (newTag, newFilter) => {dispatch(setFilter(newTag, newFilter))}
+});
+
+const mapStateToProps = state => {
+    return{
+        activeFilter: state.activeFilter,
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

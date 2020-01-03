@@ -1,7 +1,7 @@
 import React from 'react';
 import {Drink,Footer} from "../components";
-import {getDrinks} from "../constants"
-import {stringContains} from "../helpers";
+import {connect} from "react-redux";
+import {fetchDrinks, filterBySearch} from "../actionCreators/actionCreators";
 
 
 
@@ -10,10 +10,6 @@ class DrinkList extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            _drinks: [],
-            drinks: [],
-            loading: true,
-            categories: [],
             index: 12,
             pageNumber: 1
         }
@@ -21,95 +17,42 @@ class DrinkList extends React.Component {
 
     //Get the data according to the filter
     componentDidMount(){
-        getDrinks(this.props.activeTag, this.props.activeFilter)
-        .then(data => this.setState({
-            drinks: data.drinks,
-            _drinks: data.drinks,
-            loading: false
-        }))
-        .catch(err => {
-            console.log(err);
-        });
-
+        this.props.fetchDrinks();
     }
 
     //If filter is changed, display new drinks accordingly.
     componentDidUpdate(prevProps) {
         if(prevProps.activeFilter !== this.props.activeFilter){
-                getDrinks(this.props.activeTag,this.props.activeFilter)
-            .then(data => this.setState({
-                drinks: data.drinks,
-                _drinks: data.drinks,
-                
-            }))
-            .catch(err => {
-                console.log(err);
-            });
+            this.props.fetchDrinks();
         }
         if(prevProps.searchValue !== this.props.searchValue){
-            this.filterDrinksBySearch();
+            this.props.filterBySearch();
         }
     }
-
-    filterDrinksBySearch = () => {
-        if(this.props.activeFilter){
-            this.setState({
-                drinks: this.state._drinks.filter(drink => {
-                    return stringContains(drink.strDrink, this.props.searchValue)
-                })
-            })
-        }
-    }
-
-    incrementPageNumber = () => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-        this.setState({
-            pageNumber: this.state.pageNumber+1,
-            
-        })
-    }
-
-    decrementPageNumber = () => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-        this.setState({
-            pageNumber: this.state.pageNumber-1,
-            
-        })
-    }
-
 
     render(){
+        
         //Logic for displaying drinks with pagination
-        const indexOfLastDrink = this.state.pageNumber * this.state.index;
-        const indexOfFirstDrink = indexOfLastDrink - this.state.index;
-        const drinksToBeDisplayed = this.state.drinks.slice(indexOfFirstDrink, indexOfLastDrink);
+        const indexOfLastDrink = this.props.pageNumber * this.props.index;
+        const indexOfFirstDrink = indexOfLastDrink - this.props.index;
+        const drinksToBeDisplayed = this.props.drinks.slice(indexOfFirstDrink, indexOfLastDrink);
         const drinks = [
             <div>
                 {
                     drinksToBeDisplayed.map(drink => {
                         return <Drink key = {drink.idDrink}
                                         {...drink}
-                                        drinks = {this.state.drinks}
+                                        drinks = {this.props.drinks}
                         />
                     })
                 }
-
-                <Footer 
-                    totalDrinks={this.state.drinks.length}
-                    pageNumber= {this.state.pageNumber}
-                    incrementPageNumber = {this.incrementPageNumber}
-                    decrementPageNumber = {this.decrementPageNumber}
-                /> 
-                
-            
+                <Footer /> 
             </div>
         ];
-        if(this.state.loading) {
+        if(this.props.loading) {
             return <h2>Loading...</h2>
         }
-        else if(this.state.drinks.length === 0){
+        else if(this.props.drinks.length === 0){
             return <h2>Couldn't find.</h2>
         }
         else{
@@ -120,5 +63,24 @@ class DrinkList extends React.Component {
         
     }
 }
+const mapStateToProps = state => {
+    return{
+        activeFilter: state.activeFilter,
+        activeTag: state.activeTag,
+        searchValue: state.searchValue,
+        drinks: state.drinks,
+        loading: state.loading,
+        index: state.index,
+        pageNumber: state.pageNumber
+    }
+};
 
-export default DrinkList;
+const mapDispatchToProps = dispatch => ({
+    fetchDrinks: () => {dispatch(fetchDrinks())},
+    filterBySearch: () => {dispatch(filterBySearch())}
+});
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrinkList);
+

@@ -1,14 +1,14 @@
 import React from "react";
 import classNames from "classnames";
 import {alcoholicFilters} from "../constants"
+import {connect} from "react-redux";
+import {setFilter} from "../actionCreators/actionCreators";
 
 
 function FiltersAlcoholic(props){
   return(
     <div>
             <ul>
-                
-                
             <h4 className="my-4 text-center">Filters</h4>
             <h5 className="my-2 text-center">Alcohol</h5>
                 {
@@ -21,7 +21,7 @@ function FiltersAlcoholic(props){
                             })}
                             onClick={(e) => {
                                 e.preventDefault();
-                                props.onFilterDrinks("a",item);
+                                props.setFilter("a",item);
                             }}>{item}</li>
                     })
                 }
@@ -30,4 +30,14 @@ function FiltersAlcoholic(props){
   )
 }
 
-export default FiltersAlcoholic;
+const mapDispatchToProps = dispatch => ({
+    setFilter: (newTag, newFilter) => {dispatch(setFilter(newTag, newFilter))}
+});
+
+const mapStateToProps = state => {
+    return{
+        activeFilter: state.activeFilter,
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FiltersAlcoholic);

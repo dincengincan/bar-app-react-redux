@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {setSearchValue} from "../actionCreators/actionCreators";
 
 class Search extends React.Component{
     constructor(props){
@@ -12,7 +14,7 @@ class Search extends React.Component{
         const value = e.target.value;
         this.setState({
             value 
-        }, () => this.props.onSearch(value))
+        }, () => this.props.setSearchValue(value))
     };
 
     render(){
@@ -28,4 +30,8 @@ class Search extends React.Component{
     }
 }
 
-export default Search;
+const mapDispatchToProps = dispatch => ({
+    setSearchValue: (newValue) => {dispatch(setSearchValue(newValue))}
+});
+
+export default connect(null, mapDispatchToProps)(Search);
