@@ -17,6 +17,7 @@ class DrinkList extends React.Component {
 
     //Get the data according to the filter
     componentDidMount(){
+        document.title = "Bar App"
         this.props.fetchDrinks();
     }
 
@@ -38,22 +39,27 @@ class DrinkList extends React.Component {
         const drinksToBeDisplayed = this.props.drinks.slice(indexOfFirstDrink, indexOfLastDrink);
         const drinks = [
             <div>
-                {
-                    drinksToBeDisplayed.map(drink => {
-                        return <Drink key = {drink.idDrink}
-                                        {...drink}
-                                        drinks = {this.props.drinks}
-                        />
-                    })
-                }
-                <Footer /> 
+                <div className="row">
+                    {
+                        drinksToBeDisplayed.map(drink => {
+                            return <Drink key = {drink.idDrink}
+                                            {...drink}
+                                            drinks = {this.props.drinks}
+                            />
+                        })
+                    }
+                    
+                </div>
+                <div>
+                    <Footer /> 
+                </div>
             </div>
         ];
         if(this.props.loading) {
             return <h2>Loading...</h2>
         }
         else if(this.props.drinks.length === 0){
-            return <h2>Couldn't find.</h2>
+            return <h2 >Couldn't find.</h2>
         }
         else{
             return drinks;

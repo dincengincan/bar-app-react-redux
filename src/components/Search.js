@@ -19,9 +19,9 @@ class Search extends React.Component{
 
     render(){
         return (
-            <div style={{padding: 10 ,marginLeft: 40}}>
+            <div>
                 <h4>Search</h4>
-                <input type="text"
+                <input  type="text"
                        value={this.state.value}
                        onChange={this.changeValue}
                 />

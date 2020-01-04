@@ -4,7 +4,7 @@ import {incrementPageNumber, decrementPageNumber} from "../actionCreators/action
 
 
 function Footer(props){
-  return(
+    return(
     <nav>
         <ul  className="pagination justify-content-between">
               

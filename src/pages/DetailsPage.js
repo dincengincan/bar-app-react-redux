@@ -27,27 +27,28 @@ class DetailsPage extends React.Component {
             
             <div  style={{margin: "auto"}} className="col-lg-6 col-md-4 mb-4">
                 <div className="card h-100">
+                    
                     <img className="card-img-top"  src={strDrinkThumb} alt="" />
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title mt-4">
                             <h4>{strDrink}</h4>
                             <div>
-                                <span className="badge badge-primary" >{strCategory}</span>
+                                <span className="badge badge-primary mb-2" >{strCategory}</span>
                             </div>
                             <div>
-                                <span className="badge badge-warning" >{strAlcoholic}</span>
+                                <span className="badge badge-warning mb-2 " >{strAlcoholic}</span>
                             </div>
                             <div>
-                                <span className="badge badge-secondary" >{strGlass}</span>
+                                <span className="badge badge-secondary mb-2" >{strGlass}</span>
                             </div>
                             <div>
                                 <span className="badge badge-success" >{strIBA}</span>
                             </div>
-                            </h5>
+                        </h5>
                             <p className="card-text">
                                 {strInstructions}
                             </p>
-                            </div>
+                    </div>
                 </div>
             </div>
         

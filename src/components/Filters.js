@@ -32,7 +32,7 @@ class Filters extends React.Component {
         
             <div>
             
-            <ul>
+            <ul style={{padding: 0}} >
             <h5 className="my-2 text-center">Categories</h5>
                 {
                     this.state.categories.map(categorie => {
