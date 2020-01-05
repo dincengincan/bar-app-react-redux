@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/bar-app-react-redux/static/css/main.4a8de1a6.chunk.css",
+    "main.js": "/bar-app-react-redux/static/js/main.904b1a1e.chunk.js",
+    "main.js.map": "/bar-app-react-redux/static/js/main.904b1a1e.chunk.js.map",
+    "runtime-main.js": "/bar-app-react-redux/static/js/runtime-main.003ffc3d.js",
+    "runtime-main.js.map": "/bar-app-react-redux/static/js/runtime-main.003ffc3d.js.map",
+    "static/css/2.17e5ed98.chunk.css": "/bar-app-react-redux/static/css/2.17e5ed98.chunk.css",
+    "static/js/2.1900a85e.chunk.js": "/bar-app-react-redux/static/js/2.1900a85e.chunk.js",
+    "static/js/2.1900a85e.chunk.js.map": "/bar-app-react-redux/static/js/2.1900a85e.chunk.js.map",
+    "index.html": "/bar-app-react-redux/index.html",
+    "precache-manifest.da995a8eaca1a7387536d9200a234a47.js": "/bar-app-react-redux/precache-manifest.da995a8eaca1a7387536d9200a234a47.js",
+    "service-worker.js": "/bar-app-react-redux/service-worker.js",
+    "static/css/2.17e5ed98.chunk.css.map": "/bar-app-react-redux/static/css/2.17e5ed98.chunk.css.map",
+    "static/css/main.4a8de1a6.chunk.css.map": "/bar-app-react-redux/static/css/main.4a8de1a6.chunk.css.map",
+    "static/js/2.1900a85e.chunk.js.LICENSE": "/bar-app-react-redux/static/js/2.1900a85e.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.003ffc3d.js",
+    "static/css/2.17e5ed98.chunk.css",
+    "static/js/2.1900a85e.chunk.js",
+    "static/css/main.4a8de1a6.chunk.css",
+    "static/js/main.904b1a1e.chunk.js"
+  ]
+}
