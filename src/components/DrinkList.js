@@ -53,7 +53,6 @@ class DrinkList extends React.Component {
         const indexOfLastDrink = this.props.pageNumber * this.props.index;
         const indexOfFirstDrink = indexOfLastDrink - this.props.index;
         const drinksToBeDisplayed = this.props.drinks.slice(indexOfFirstDrink, indexOfLastDrink);
-        console.log(drinksToBeDisplayed.length)
         const drinks = [
             <div>
                 <div className="row">
@@ -67,7 +66,7 @@ class DrinkList extends React.Component {
                     
                 </div>
                 <div>
-                    <Footer /> 
+                    <Footer  /> 
                 </div>
             </div>
         ];
@@ -79,8 +78,8 @@ class DrinkList extends React.Component {
                     {[1,2,3,4,5,6].map(item =>{
                       return(
                         <div key={item} className="col-lg-6 col-md-6 col-sm-12 mb-4 ">
-                          <div className="card ">
-                            <this.MyLoader/>
+                          <div className="card">
+                            <this.MyLoader />
                           </div>
                       </div>
                     )})}

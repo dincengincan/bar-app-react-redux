@@ -2,24 +2,6 @@
   text-align: center;
 }
 
-
-.Details{
-    .row{
-      position: relative;
-      .back-arrow{
-        position:absolute;
-        top:0;
-        left:0;
-        margin: 0 15px;
-        cursor: pointer;
-        &:hover{
-          opacity: .6;
-        }
-      }
-    }
-  }
-  
-  
   input{
     border: solid 1px rgb(189, 189, 189);
     border-radius: 50px ;
@@ -36,36 +18,46 @@
         box-shadow: 0px 0px 8px gray;
       }
   }
-  .switchButton{
-    display: none;
+
+  .categories{
+    padding: 0;
+    
   }
-  
-  .navbar{
-    justify-content: space-between;
-  }
-  
-  @media screen and (max-width:600px){
-    .navbar{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      .navbar-nav{
-        display: none;
-      }
-      .switchButton{
-        display: inline-flex;
-        color: #fff;
-      }
-      .button-container{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .navbar-nav.responsive{
-        display: block;
-      }
+
+  #card{
+    box-shadow: 0px 0px 10px 0.5px rgb(202, 202, 202);
+    &:hover{
+      box-shadow: 0px 0px 20px 1px gray;
     }
+  }
+
+
+  #header{
+    border-bottom: 2px solid rgb(163, 163, 163);
+    background-color: red;
+  }
+
+  .div{
+    nav{
+      justify-content: space-between;
+      background-color: red;
+    } 
+  }
+
+  $active-color: #acacac;
+  .list-group-item{
+    cursor: pointer;
+    &:hover{
+      background-color: rgb(231, 231, 231)
+    }
+    &.active{
+      background-color: $active-color;
+      border-color: $active-color;
+      &:hover{
+        background-color: $active-color;
+      }      
+    }
+    
   }
 
   

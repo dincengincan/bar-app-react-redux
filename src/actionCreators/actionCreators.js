@@ -12,7 +12,7 @@ export function setSearchValue(newValue){
 }
 
 export function setDrinks(newDrinks){
-    return {type: SET_DRINKS, drinks: newDrinks, _drinks: newDrinks }
+    return {type: SET_DRINKS, drinks: newDrinks }
 }
 
 export function fetchDrinks(){
@@ -20,8 +20,6 @@ export function fetchDrinks(){
         dispatch(loading()); //first loading value changes
         const state = getState();
         getDrinks(state.activeTag, state.activeFilter).then(data => dispatch(setDrinks(data.drinks))) 
-            
-
         //after data is received, loading value changes back within setDrinks
     }
 }

@@ -29,7 +29,8 @@ const rootReducer = function (state ={
         case SET_SEARCH_VALUE:
             return {
                     ...state, 
-                    searchValue: action.searchValue  
+                    searchValue: action.searchValue,
+                    
             }
 
         case SET_DRINKS:
@@ -37,7 +38,10 @@ const rootReducer = function (state ={
                     ...state, 
                     drinks: action.drinks, 
                     _drinks: action.drinks,
-                    loading: false 
+                    loading: false,
+                    //when category is changed, turn back to first page
+                    pageNumber: 1
+                    
             }
         
         case LOADING:
@@ -52,7 +56,9 @@ const rootReducer = function (state ={
                     })
             return {
                 ...state,
-                drinks: newDrinks
+                drinks: newDrinks,
+                // while searching in other pages rather than first one, update pageNumber to see the items also, to overcome slice problem.
+                pageNumber: 1  
             }
         case INCREMENT_PAGENUMBER:
             window.scrollTo({top: 0, left:0, behavior:'smooth'})

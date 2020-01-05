@@ -10,14 +10,14 @@ function Footer(props){
               
                 {
                     props.pageNumber < 2
-                    ? <button disabled className="btn btn-dark" >&laquo; Previous Page</button>
-                    : <button className="btn btn-dark" onClick={() => props.decrementPageNumber()}>&laquo; Previous Page</button>
+                    ? <button disabled className="btn btn-outline-secondary" >&laquo; Previous Page</button>
+                    : <button className="btn btn-outline-secondary" onClick={() => props.decrementPageNumber()}>&laquo; Previous Page</button>
                 }
 
                 {
                     props.drinks.length < (props.pageNumber * 12)
-                    ? <button disabled className="btn btn-dark">Next Page &raquo;</button>
-                    : <button className="btn btn-dark" onClick={() => props.incrementPageNumber() }>Next Page &raquo;</button>
+                    ? <button disabled className="btn btn-outline-secondary">Next Page &raquo;</button>
+                    : <button className="btn btn-outline-secondary" onClick={() => props.incrementPageNumber() }>Next Page &raquo;</button>
                 }
                 
 

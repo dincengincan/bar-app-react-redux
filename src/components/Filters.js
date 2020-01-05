@@ -19,7 +19,7 @@ class Filters extends React.Component {
         getCategories()
         .then(data => this.setState({
             categories: data.drinks
-        },() => console.log(this.state.categories) ))
+        } ))
         .catch(err => {
             console.log(err);
         });
@@ -32,12 +32,12 @@ class Filters extends React.Component {
         
             <div>
             
-            <ul style={{padding: 0}} >
+            <ul className="categories" >
             <h5 className="my-2 text-center">Categories</h5>
                 {
                     this.state.categories.map(categorie => {
-                        return <li
-                            key={categorie}
+                        return <li 
+                            key={Math.random()}
                             className={classNames({
                                 "list-group-item": true,
                                 "active":  this.props.activeFilter === categorie.strCategory

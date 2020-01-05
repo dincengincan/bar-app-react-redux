@@ -3,17 +3,17 @@ import {Link} from "react-router-dom";
 
 function Header() {
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-secondary ">
+        <div >
+            <nav id="header" className="navbar navbar-expand-lg navbar-dark bg-secondary ">
                 <div className="container">
-                <Link className="navbar-brand"to="/">Bar Application</Link>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
+                <Link to="/"><img style={{maxHeight:40}} src="https://i.ibb.co/ygzqTxZ/favicon.png" class="img-fluid page-header" alt="Responsive image" ></img></Link>
+                <Link style={{marginLeft:10}} className="navbar-brand"to="/">Bar Application</Link>
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
+                            <li  className="nav-item">
                                 <Link className="nav-link" to="/">Homepage</Link>
                             </li>
                         </ul>
-                    </div>
+                    
                 </div>
             </nav>
         </div>
