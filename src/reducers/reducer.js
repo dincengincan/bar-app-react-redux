@@ -18,7 +18,7 @@ const rootReducer = function (state ={
 
 }, action) {
     switch (action.type) {
-
+    
         case SET_FILTER:
             return {
                 ...state, 
@@ -55,15 +55,13 @@ const rootReducer = function (state ={
                 drinks: newDrinks
             }
         case INCREMENT_PAGENUMBER:
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({top: 0, left:0, behavior:'smooth'})
             return {
                 ...state,
                 pageNumber: state.pageNumber+1
             }
-        case DECREMENT_PAGENUMBER:
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+        case DECREMENT_PAGENUMBER:  
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             return {
                 ...state,
                 pageNumber: state.pageNumber-1

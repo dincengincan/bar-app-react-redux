@@ -19,7 +19,9 @@ export function fetchDrinks(){
     return (dispatch, getState) => {
         dispatch(loading()); //first loading value changes
         const state = getState();
-        getDrinks(state.activeTag, state.activeFilter).then(data => dispatch(setDrinks(data.drinks)))
+        getDrinks(state.activeTag, state.activeFilter).then(data => dispatch(setDrinks(data.drinks))) 
+            
+
         //after data is received, loading value changes back within setDrinks
     }
 }

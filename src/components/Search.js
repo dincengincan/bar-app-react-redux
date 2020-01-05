@@ -18,10 +18,12 @@ class Search extends React.Component{
     };
 
     render(){
+        const placeholder = "Something to drink?";
         return (
             <div>
                 <h4>Search</h4>
-                <input  type="text"
+                <input type="text"
+                        placeholder = {placeholder}
                        value={this.state.value}
                        onChange={this.changeValue}
                 />
