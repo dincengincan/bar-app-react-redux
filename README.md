@@ -1,13 +1,12 @@
 # Bar Application
-An app built with React and React Router.
+An app built with React, React Router, Redux and Redux Thunk.
 
-IMPORTANT NOTE: Permission needs to be given in Browser in order to get data from the API.
 
-Application consists of 3 pages: HomePage, DetailsPage and FavouritePage using React Router. It lazy-loads all the pets according to the data received from a mock API.  User can filter pets,  search a specific  name, add a pet as favourite and see its detail by clicking on it.   
+Application consists of 2 pages: HomePage, DetailsPage using React Router. It loads 12 items per page according to the data received from API. User can filter drinks, search a specific name of a drink and see its detail by clicking on it.  
 
 ## Demo
 
-Use the app online at https://dincengincan.github.io/pets-app-react/
+Use the app online at https://dincengincan.github.io/bar-app-react-redux/
 
 ![petsapp GIF](demo/petsapp.gif) 
 
@@ -15,8 +14,14 @@ Use the app online at https://dincengincan.github.io/pets-app-react/
 * JavaScript
 * [React](https://reactjs.org/)
 * React Router
-* CSS
+* React Content Loader
+* Redux
+* Redux Thunk
+* SASS
+* Bootstrap
+* Classnames
 * Axios
+
 
 ## Run Project Locally
 
@@ -24,8 +29,8 @@ Assumes local installation of [Node.js](https://nodejs.org)
 
 To run the project locally:
 
-* Clone this repository `git clone https://github.com/dincengincan/pets-app-react.git`
-* Run `cd todo-app-react-redux`
+* Clone this repository `git clone https://github.com/dincengincan/bar-app-react-redux.git`
+* Run `cd bar-app-react-redux`
 * Run `npm install`
 * Run `npm start` 
 
