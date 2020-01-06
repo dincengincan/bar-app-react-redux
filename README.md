@@ -8,7 +8,7 @@ Application consists of 2 pages: HomePage, DetailsPage using React Router. It lo
 
 Use the app online at https://dincengincan.github.io/bar-app-react-redux/
 
-![petsapp GIF](demo/petsapp.gif) 
+![barapp GIF](demo/barapp.gif) 
 
 ## Technologies Used
 * JavaScript

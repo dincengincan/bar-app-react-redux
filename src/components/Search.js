@@ -12,9 +12,7 @@ class Search extends React.Component{
     //Change the input value 
     changeValue = (e) => {
         const value = e.target.value;
-        this.setState({
-            value 
-        }, () => this.props.setSearchValue(value))
+        this.props.setSearchValue(value);
     };
 
     render(){
@@ -24,7 +22,7 @@ class Search extends React.Component{
                 <h4>Search</h4>
                 <input type="text"
                         placeholder = {placeholder}
-                       value={this.state.value}
+                       value={this.props.searchValue}
                        onChange={this.changeValue}
                 />
             </div>
@@ -33,7 +31,12 @@ class Search extends React.Component{
 }
 
 const mapDispatchToProps = dispatch => ({
-    setSearchValue: (newValue) => {dispatch(setSearchValue(newValue))}
+    setSearchValue: (newValue) => {dispatch(setSearchValue(newValue))},
 });
 
-export default connect(null, mapDispatchToProps)(Search);
+const mapStateToProps = state => {
+    return{
+        searchValue: state.searchValue
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,6 +1,6 @@
 import {stringContains} from "../helpers"
 import {SET_FILTER, SET_SEARCH_VALUE, SET_DRINKS, LOADING, FILTER_BY_SEARCH
-,INCREMENT_PAGENUMBER, DECREMENT_PAGENUMBER} from "../actions/actions"
+,INCREMENT_PAGENUMBER, DECREMENT_PAGENUMBER, } from "../actions/actions"
 
 
 const rootReducer = function (state ={
@@ -23,7 +23,8 @@ const rootReducer = function (state ={
             return {
                 ...state, 
                 activeTag: action.activeTag, 
-                activeFilter: action.activeFilter
+                activeFilter: action.activeFilter,
+                searchValue: ""
             }
 
         case SET_SEARCH_VALUE:
@@ -32,6 +33,7 @@ const rootReducer = function (state ={
                     searchValue: action.searchValue,
                     
             }
+        
 
         case SET_DRINKS:
             return {
@@ -39,8 +41,9 @@ const rootReducer = function (state ={
                     drinks: action.drinks, 
                     _drinks: action.drinks,
                     loading: false,
-                    //when category is changed, turn back to first page
-                    pageNumber: 1
+                    //when category is changed, turn back to first page and set searchValue to none
+                    pageNumber: 1,
+                    
                     
             }
         

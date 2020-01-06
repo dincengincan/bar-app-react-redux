@@ -1,5 +1,5 @@
 import {getDrinks} from "../constants"
-import {SET_FILTER, SET_SEARCH_VALUE, SET_DRINKS, LOADING, FILTER_BY_SEARCH, DECREMENT_PAGENUMBER, INCREMENT_PAGENUMBER  } from "../actions/actions";
+import {SET_FILTER, SET_SEARCH_VALUE, SET_DRINKS, LOADING, FILTER_BY_SEARCH, DECREMENT_PAGENUMBER, INCREMENT_PAGENUMBER,} from "../actions/actions";
 
 
 export function setFilter(newTag, newFilter){
@@ -10,6 +10,7 @@ export function setFilter(newTag, newFilter){
 export function setSearchValue(newValue){
     return {type: SET_SEARCH_VALUE, searchValue: newValue }
 }
+
 
 export function setDrinks(newDrinks){
     return {type: SET_DRINKS, drinks: newDrinks }

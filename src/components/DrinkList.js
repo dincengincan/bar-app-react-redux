@@ -18,16 +18,16 @@ class DrinkList extends React.Component {
 
     MyLoader = () => (
         <ContentLoader 
-          height={570}
+          height={540}
           width={400}
           speed={1}
           primaryColor="#f3f3f3"
           secondaryColor="#ecebeb"
         >
           <rect x="0" y="0" rx="4" ry="4" width="400" height="400" /> 
-          <rect x="80" y="440" rx="6" ry="6" width="240" height="16" /> 
-          <rect x="140" y="470" rx="6" ry="6" width="120" height="16" /> 
-          <rect x="155" y="500" rx="6" ry="6" width="90" height="40" /> 
+          <rect x="80" y="410" rx="6" ry="6" width="240" height="16" /> 
+          <rect x="140" y="440" rx="6" ry="6" width="120" height="16" /> 
+          <rect x="155" y="470" rx="6" ry="6" width="90" height="40" /> 
           
         </ContentLoader>
       )
